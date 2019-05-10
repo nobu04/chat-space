@@ -44,7 +44,7 @@ Things you may want to cover:
 |group|references|null: false, foreign_key: true|
 |text|text||
 |image|text||
-|creation_date|datetime|null: false|
+|created_at|timestamp|null: false|
 
 ### Association
 - belongs_to :group
