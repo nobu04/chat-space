@@ -42,7 +42,7 @@ Things you may want to cover:
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
 |group|references|null: false, foreign_key: true|
-|text|text|null: false, index: true|
+|text|text||
 |image|text||
 |creation_date|datetime|null: false|
 
