@@ -1,0 +1,8 @@
+.form
+  %form#new_message.new-message{}
+    .input-box
+      %input.input-box__text{placeholder: "type a message", type: "text"}
+      %label.upload-label{for: "message_image"}
+        %i.fa.fa-picture-o
+        %input#message_image.upload-label__input{type: "file"}
+    %input.new-message__submit-btn{type: "submit", value: "Send"}
