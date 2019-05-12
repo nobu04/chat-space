@@ -89,7 +89,7 @@
   display: flex;
   margin-top: 15px;
   font-size: 12px;
-  color: #999999;
+  color: $color-gray;
 }
 
 .messages {
@@ -109,7 +109,7 @@
             font-weight: bold;
           }
           &___timestamp {
-            color: #999999;
+            color: $color-gray;
           }
       }
       &__message{
