@@ -1,8 +1,10 @@
 .main-header
   .current-group
-    %h2.current-group__name aaa
+    %h2.current-group__name 
+      = group.name
     %ul.member-list
       Member：
-      %li.member-list__member nobuaki
-      %a{:href => ""}
+      %li.member-list__member 
+      - group.users.each do |user|
+        = user.name
   .main-header__edit-btn Edit

@@ -2,9 +2,17 @@
   .flash-box
   .wrapper
     .chat-side
-      = render partial: 'side-header'
-      = render partial: "groups"
+      = render partial: 'groups/side-header'
+      = render partial: 'groups/groups'
     .chat-main
-      = render partial: 'main-header'
-      = render partial: 'messages'
-      = render partial: 'form'
+      = render partial: 'main-header', locals:{ group: @group}
+      .messages
+        = render partial: 'message', collection: @messages
+      .form
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: ' type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon-later'
+              = f.file_field :image, class: 'hidden'
+          = f.submit "Send", class: 'form__submit'
