@@ -55,7 +55,6 @@ $(function(){
     var reloadMessages = function(){
       var last_message_id = $('.message').last().data('id')
       var user_url = "./api/messages";
-      console.log(last_message_id);
 
        $.ajax ({
         url: user_url,
@@ -77,7 +76,6 @@ $(function(){
       })
 
       .fail(function() {
-        console.log('error');
       });
      } 
      setInterval(reloadMessages, 5000);
