@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message) {
     var content = message.content ? `${ message.content }` : "";
     var img = message.image ? `<img src= ${ message.image }>` : "";
-    var html = `<div class="message">
+    var html = `<div class="message" data-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${message.user_name}
@@ -19,7 +19,7 @@ $(function(){
                   </div>
                 </div>`
   return html;
-  }
+  };
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
@@ -42,12 +42,42 @@ $(function(){
 
     })
 
-    .fail(function(data){
+    .fail(function(){
       alert('エラーが発生したためメッセージは送信できませんでした。');
     })
 
-    .always(function(data){
+    .always(function(){
       $('.form__submit').prop('disabled', false);
     })
   })
-})
+
+  $(function(){ 
+    var reloadMessages = function(){
+      var last_message_id = $('.message').last().data('id')
+      var user_url = "./api/messages";
+
+       $.ajax ({
+        url: user_url,
+        type: 'GET',
+        dataType: 'json',
+        data: {id: last_message_id },
+      })
+
+      .done(function(messages) {
+        var insertHTML = '';
+        if (messages.length !== 0) {
+          messages.forEach(function(message) {
+              insertHTML += buildHTML(message);                     
+          });
+          }
+
+          $('.messages').append(insertHTML);
+          $('.messages').animate({ scrollTop: $(".messages")[0].scrollHeight }, 5000);
+      })
+
+      .fail(function() {
+      });
+     } 
+     setInterval(reloadMessages, 5000);
+  });
+  })
