@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :set_group, except: [:index, :new, :create]
+
   def index
   end
 
@@ -10,7 +12,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to root_path, notice: 'グループを作成しました'
+      redirect_to root_path(@group), notice: 'グループを作成しました'
     else
       render :new
     end
@@ -21,8 +23,8 @@ class GroupsController < ApplicationController
       redirect_to group_messages_path(@group), notice: 'グループを編集しました'
     else
       render :edit
+    end
   end
-end
 
   def edit
   end

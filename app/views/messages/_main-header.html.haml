@@ -7,4 +7,6 @@
       %li.member-list__member 
       - group.users.each do |user|
         = user.name
-  .main-header__edit-btn Edit
+  .main-header__edit-btn 
+    = link_to edit_group_path(group) do
+      Edit
