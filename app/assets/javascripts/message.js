@@ -73,7 +73,6 @@ $(function(){
           }
 
           $('.messages').append(insertHTML);
-          $('#new_message')[0].reset();                   
           $('.messages').animate({ scrollTop: $(".messages")[0].scrollHeight }, 5000);
       })
 
