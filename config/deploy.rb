@@ -1,6 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
+set :linked_files, %w{ config/secrets.yml }
 set :application, "chat-space"
 set :repo_url, "git@github.com:nobu04/chat-space.git"
 
@@ -16,7 +17,6 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-set :linked_files, %w{ config/secrets.yml }
 
 
 after 'deploy:publishing', 'deploy:restart'
